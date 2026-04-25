@@ -1376,10 +1376,10 @@
             if (avatarBase64) {
                 doc.addImage(avatarBase64, 'JPEG', 14, 12, 16, 16);
                 doc.setFontSize(22);
-                doc.text(`HuggingFace Activity Report: ${fullname}`, 34, 24);
+                doc.text(`Hugging Face Activity Report: ${fullname}`, 34, 24);
             } else {
                 doc.setFontSize(22);
-                doc.text(`HuggingFace Activity Report: ${fullname}`, 14, 24);
+                doc.text(`Hugging Face Activity Report: ${fullname}`, 14, 24);
             }
             
             const totalModels = state.models.length;
@@ -1442,12 +1442,11 @@
                 const topModels = [...state.models].sort((a, b) => getLifetimeDownloads(b) - getLifetimeDownloads(a)).slice(0, 50);
                 doc.autoTable({
                     startY: startY,
-                    head: [['Top Models (Max 50)', 'Downloads', 'Likes', 'Task', 'Created', 'Updated']],
+                    head: [['Top Models (Max 50)', 'Downloads', 'Likes', 'Created', 'Updated']],
                     body: topModels.map(m => [
                         m.id || m.modelId, 
                         formatNumFull(getLifetimeDownloads(m)), 
                         formatNumFull(getItemLikes(m)),
-                        m.pipeline_tag || '-',
                         m.createdAt ? new Date(m.createdAt).toLocaleDateString() : '-',
                         m.lastModified ? new Date(m.lastModified).toLocaleDateString() : '-'
                     ]),
@@ -1483,11 +1482,10 @@
                 const topSpaces = [...state.spaces].sort((a, b) => getItemLikes(b) - getItemLikes(a)).slice(0, 50);
                 doc.autoTable({
                     startY: startY,
-                    head: [['Top Spaces (Max 50)', 'Likes', 'SDK', 'Created', 'Updated']],
+                    head: [['Top Spaces (Max 50)', 'Likes', 'Created', 'Updated']],
                     body: topSpaces.map(s => [
                         s.id, 
                         formatNumFull(getItemLikes(s)),
-                        s.sdk || '-',
                         s.createdAt ? new Date(s.createdAt).toLocaleDateString() : '-',
                         s.lastModified ? new Date(s.lastModified).toLocaleDateString() : '-'
                     ]),
