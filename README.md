@@ -1,4 +1,4 @@
-# **HuggingFace User Stats**
+# **[HuggingFace User Stats](https://huggingface.co/spaces/strangertoolshf/huggingface-user-stats)**
 
 A single-page web application for viewing detailed statistics of any HuggingFace user account. Displays models, datasets, spaces, lifetime downloads, monthly downloads, and likes in a clean, tree-structured interface.
 
